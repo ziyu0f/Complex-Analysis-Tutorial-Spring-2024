@@ -1,4 +1,5 @@
 \documentclass{article}[a4paper, 12pt]
+\usepackage[left=1in,right=1in,top=1.25in,bottom=1.25in]{geometry}
 \usepackage{ctex}
 \usepackage{amsthm}
 \usepackage{hyperref}
@@ -14,6 +15,12 @@
 \newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
 
 \begin{document}
+
+\title{复分析第二次习题课}
+\author{彭子鱼}
+\date{2024 年 3 月 31 日}
+
+\maketitle
 
 \section{作业}
 
@@ -116,6 +123,8 @@
       \fill[red] (-1,0) circle (2pt) node[below] {$-1$};
       \fill[red] (1,0) circle (2pt) node[below] {$1$};
       \fill[red] (0,1) circle (2pt) node[left] {$i$};
+      \fill[blue] (0,0) circle (2pt) node[below] {$0$};
+      \fill[blue] (2,0) circle (2pt) node[above] {$2$};
       \draw[red, thick] (0,1) -- (0,3) node[above, black] {};
       \draw[red, thick] (0,1) -- (1,0) node[above, black] {};
       \draw[red, thick] (0,1) -- (-1,0) node[above, black] {};
@@ -141,9 +150,30 @@
     f(-i)&=f(i)+\Delta_{C_0}\sqrt[4]{(1-z)^3(1+z)}\\
     &=\sqrt2e^{-\frac{\pi}{8}i}+f(i)\left(e^{\frac14i\Delta_{C_0}\mathrm{Arg}(1-z)^3(1+z)}-1\right)\\
     &=\sqrt2e^{-\frac{\pi}{8}i}+f(i)\left(e^{\frac14i(3\cdot(-\frac{3}{2}\pi)+(-\frac{1}{2}\pi))}-1\right)\\
-    &=\sqrt2e^{\frac{5}{8}\pi i}.
+    &=\sqrt2e^{\frac{5}{8}\pi i},
   \end{align*}
+  其中\(C_0\)如图\ref{fig:2}所示.
 \end{proof}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+      % Draw the real and imaginary axes
+      \draw[thick,->] (-2,0) -- (3,0) node[anchor=north west] {};
+      \draw[thick,->] (0,-2) -- (0,3) node[anchor=south east] {};
+  
+      % Draw the excluded points and lines
+      \fill[red] (-1,0) circle (2pt) node[below] {$-1$};
+      \fill[red] (1,0) circle (2pt) node[below] {$1$};
+      \fill[blue] (0,1) circle (2pt) node[left] {$i$};
+      \fill[blue] (0,-1) circle (2pt) node[left] {$-i$};
+      \draw[red, thick] (-1,0) -- (1,0) node[above, black] {};
+  
+      \draw[thick, blue, -{Stealth[length=3mm]}] (0,1) .. controls (2,1) and (2,-1) .. (0,-1) node[pos=0.5, right] {\(C_0\)};
+  \end{tikzpicture}
+  \caption{Illustration of \(C_0\) in Problem 2.4.27.}
+  \label{fig:2}
+  \end{figure}
 
 \begin{problem}[2.5.1]
   求将上半平面映为上半平面的分式线性变换, 使得\(\infty\), \(0\), \(1\)分别映为\(0\), \(1\), \(\infty\).
@@ -224,21 +254,82 @@
 \end{problem}
 
 \begin{solution}
-  
+  见图\ref{fig:2.5.15}. \(w=\sqrt{z^4+4}\) (\(\sqrt{\cdot}\)取\(\sqrt{-1}=i\)分支)满足要求.
 \end{solution}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/2.5.15.jpg}
+  \caption{Illustration of Problem 2.5.15.}
+  \label{fig:2.5.15}
+\end{figure}
 
 \begin{problem}[2.5.16]
   求单叶全纯映射, 将\(\{z\in\mathbb{C}:-\frac\pi2<\Re z<\frac\pi2,\Im z>0\}\)映为上半平面, 且将\(\frac\pi2\), \(-\frac\pi2\), \(0\)分别映为\(1\), \(-1\), \(0\).
 \end{problem}
 
 \begin{solution}
-  
+  可以验证\(w=\sin z\)满足要求. 如对三角函数和Joukowsky变换不熟悉, 也可如图\ref{fig:2.5.16}构造.
 \end{solution}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/2.5.16.jpg}
+  \caption{Illustration of Problem 2.5.16.}
+  \label{fig:2.5.16}
+\end{figure}
+
 \begin{problem}[2.5.18]
-  求单叶全纯映射将
+  求单叶全纯映射将\(|z|=1\)与\(|z+\sqrt{3}i|=2\)围成的月牙形域映为单位圆盘.
 \end{problem}
 
-\section{补充材料}
+\begin{solution}
+  见图\ref{fig:2.5.18}. \(w=\frac{3z^2+1}{z^3+3z}\)满足要求.
+\end{solution}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/2.5.18.jpg}
+  \caption{Illustration of Problem 2.5.18.}
+  \label{fig:2.5.18}
+\end{figure}
+
+\section{补充题}
+
+\subsection{多值函数计算}
+
+参考第一次习题课习题2.8 (2021年H班期中).
+
+\subsection{共形映射构造}
+
+\begin{problem}[2.5.19]
+  求单叶全纯映射将除去\([1,2]\)的单位圆盘外部映为上半平面.
+\end{problem}
+
+\begin{solution}
+  见图\ref{fig:2.5.19}. \(w=\frac{\sqrt{-\frac{(z-1)^2}{(z+1)^2}+\frac19}-i}{\sqrt{-\frac{(z-1)^2}{(z+1)^2}+\frac19}+i}\) (\(\sqrt{\cdot}\)取\(\sqrt{-1}=i\)分支)满足要求.
+\end{solution}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/2.5.19.jpg}
+  \caption{Illustration of Problem 2.5.19.}
+  \label{fig:2.5.19}
+\end{figure}
+
+\begin{problem}
+  求共形映射将双曲线\(x^2-y^2=a^2\)的右半支映为单位圆盘, 使得焦点和顶点分别被映为\(0\)和\(-1\).
+\end{problem}
+
+\begin{solution}
+  见图\ref{fig:supp1}. \(w=1-2a^2z^{-2}\)满足要求.
+\end{solution}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/supp1.jpg}
+  \caption{Illustration of Problem}
+  \label{fig:supp1}
+\end{figure}
 
 \end{document}

@@ -1,0 +1,102 @@
+\documentclass{article}[a4paper, 12pt]
+\usepackage[left=1in,right=1in,top=1.25in,bottom=1.25in]{geometry}
+\usepackage{ctex}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\pgfplotsset{compat=1.17}
+
+\newtheoremstyle{mystyle}
+  {1em} % Space above
+  {1em} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{mystyle}
+\newtheorem{problem}{题}
+\newtheorem*{remark}{注记}
+\newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
+
+\begin{document}
+
+\title{复分析第五次习题课}
+\author{彭子鱼}
+\date{2024 年 5 月 26 日\\上次更新: \today}
+
+\maketitle
+
+\section{作业}
+
+\begin{problem}[5.1.2]
+  求函数在给定域上的Laurent展开.
+  \begin{itemize}
+    \item[(1)] \(\frac{1}{z^2(z-1)}\), \(D=B(1,1)\backslash\{1\}\);
+    \item[(3)] \(\text{Log}\left(\frac{z-1}{z-2}\right)\), \(D=B(\infty,2)\);
+    \item[(5)] \(\frac{1}{(z-5)^n}\), \(n\ge0\), \(D=B(\infty,5)\).
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item [(1)] 由于\(|z-1|<1\), \[\begin{aligned}
+      \frac{1}{z^2(z-1)}&=\frac{1}{z-1}\cdot\frac{1}{(1+z-1)^2}\\
+      &=\frac{1}{z-1}\cdot\sum_{n=0}^\infty (-1)^n(n+1)(z-1)^n\\
+      &=\sum_{n=0}^\infty (-1)^n(n+1)(z-1)^{n-1}.
+    \end{aligned}\]
+    \item [(3)] 易验证在\(B(\infty,2)\)上\(\text{Log}\left(\frac{z-1}{z-2}\right)\)可取出单值全纯分支, 只需考虑主支. \[\begin{aligned}
+      \log\left(\frac{z-1}{z-2}\right)&=\log\left(1-\frac1z\right)-\log\left(1-\frac2z\right)\\
+      &=-\sum_{n=1}^\infty \frac{1}{nz^n}+\sum_{n=1}^\infty\frac{2^n}{nz^n}\\
+      &=\sum_{n=1}^\infty \frac{2^n-1}{n}z^{-n}.
+    \end{aligned}\]
+    故\[\text{Log}\left(\frac{z-1}{z-2}\right)=\sum_{n=1}^\infty \frac{2^n-1}{n}z^{-n}+2k\pi i,\] 其中\(k\in\mathbb{Z}\).
+    \item [(5)] 由于\(|\frac{5}{z}|<1\), \begin{align*}
+      \frac{1}{(z-5)^n}&=\frac{1}{z^n}\frac{1}{(1-\frac{5}{z})^n}\\
+      &=\frac{1}{z^n}\sum_{k=0}^\infty \frac{1}{k!}n(n+1)\cdots(n+k-1)\left(\frac{5}{z}\right)^k\\
+      &=\sum_{k=0}^\infty \binom{n+k-1}{n-1}5^kz^{-n-k}. \tag*{\(\qed\)}
+    \end{align*}
+  \end{itemize}
+  \renewcommand{\qedsymbol}{}
+\end{solution}
+
+\begin{remark}
+  求Laurent级数时, 须注意在何处展开.
+\end{remark}
+
+\begin{problem}[5.2.2]
+  求函数\(f(z)\)的奇点并判断其类型.
+  \begin{itemize}
+    \item [(3)] \(\sin\frac{1}{z-1}\).
+    \item [(7)] \(\sin\left(\frac{1}{\cos\frac{1}{z}}\right)\).
+    \item [(8)] \(e^{\tan z}\).
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item [(3)] 可能的奇点为\(1,\infty\). 因为\(\lim\limits_{z\to1}f(z)\)不存在, \(\lim\limits_{z\to0}f\left(\frac{1}{z}\right)=\lim\limits_{z\to0}\sin\frac{z}{z-1}=0\), 所以\(1\)是本性奇点, \(\infty\)是可去奇点.
+    \item [(7)] 可能的奇点为\(0,\infty,\frac{2}{(2k+1)\pi}\), 其中\(k\in\mathbb Z\). 因为\(\lim\limits_{z\to\frac{2}{(2k+1)\pi}}f(z)\)不存在, 所以\(\frac{2}{(2k+1)\pi}\) (\(k\in\mathbb Z\))是本性奇点. 从而\(0\)是非孤立奇点. 因为\(\lim\limits_{z\to 0}f\left(\frac{1}{z}\right)=\lim\limits_{z\to 0}\sin\left(\frac{1}{\cos z}\right)=\sin 1\), 所以\(\infty\)是可去奇点.
+    \item [(8)] 可能的奇点为\(\infty, k\pi+\frac\pi2\), 其中\(k\in\mathbb Z\). 因为\(\lim\limits_{z\to k\pi+\frac\pi2}f(z)\)不存在, 所以\(k\pi+\frac\pi2\) (\(k\in\mathbb Z\))是本性奇点. 从而\(\infty\)是非孤立奇点. \qedhere
+  \end{itemize}
+\end{solution}
+
+\begin{remark}
+  须讨论\(\infty\)的类型. 注意非孤立奇点的概念.
+\end{remark}
+
+\begin{problem}[5.3.1]
+  求所有\(\mathbb C\)上亚纯函数\(f\), 使得\(|f(z)|=1\)对任意\(z\in\partial B(0,1)\)成立.
+\end{problem}
+
+\begin{solution}
+  
+\end{solution}
+
+\end{document}

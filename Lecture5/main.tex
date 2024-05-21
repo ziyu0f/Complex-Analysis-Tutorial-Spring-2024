@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{unicode-math}
 \usetikzlibrary{arrows.meta}
 \pgfplotsset{compat=1.17}
 
@@ -131,19 +132,17 @@
 \begin{solution}
   记\(h(z)=\frac{f(z)}{zg(z)}\).
 
-  先证明: 若\(z_k\ne0\), 则对充分小的\(\varepsilon>0\),\[\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=\frac{f(z_k)}{z_kg'(z_k)}.\] 这可分两种情况讨论. 若\(f(z_k)\ne 0\), 则\(z_k\)是\(h\)的1阶极点, \[\text{Res}(h,z_k)=\lim_{z\to z_k}\frac{f(z)}{z}\cdot\frac{z-z_k}{g(z)}=\frac{f(z_k)}{z_kg'(z_k)}.\] 若\(f(z_k)=0\), 则\(z_k\)是\(h\)的可去奇点, 从而\(\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=0\). 总之, 上式成立.
+  先证明: 若\(z_k\ne0\), 则对充分小的\(\varepsilon>0\),\[\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=\frac{f(z_k)}{z_kg'(z_k)}.\] 
+  
+  这可分两种情况讨论. 若\(f(z_k)\ne 0\), 则\(z_k\)是\(h\)的1阶极点, \[\text{Res}(h,z_k)=\lim_{z\to z_k}\frac{f(z)}{z}\cdot\frac{z-z_k}{g(z)}=\frac{f(z_k)}{z_kg'(z_k)}.\] 若\(f(z_k)=0\), 则\(z_k\)是\(h\)的可去奇点, 从而\(\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=0\). 总之, 上式成立.
 
   再讨论\(0\)处情形. 对充分小的\(\varepsilon>0\), 记\[I=\frac{1}{2\pi i}\int_{|z|=\varepsilon}\frac{f(z)}{zg(z)}dz.\]
+  
+  若\(0\)不是\(g\)的零点, 则\(0\)是\(h\)的1阶极点或可去奇点, 由\(f(0)\)是否为0决定. 和上面类似可知\[I=\frac{f(0)}{g(0)}.\]
 
-  情形1: \(0\)不是\(g\)的零点.
+  若\(0\)是\(g\)的零点, 对\(f\)在0处情况讨论. \newline 若\(0\)是\(f\)的至少2阶零点, 则\(0\)是\(h\)的可去奇点, 从而\[I=0.\] 若\(0\)是\(f\)的1阶零点, 则\(0\)是\(h\)的1阶极点, \[I=\text{Res}(h,0)=\lim_{z\to0}zh(z)=\lim_{z\to0}\frac{f(z)/z}{g(z)/z}=\frac{f'(0)}{g'(0)}.\] 若\(0\)不是\(f\)的零点, 则\(0\)是\(h\)的2阶极点, \[I=\text{Res}(h,0)=\lim_{z\to0}(z^2h(z))'=\lim_{z\to0}\left(\frac{zf(z)}{g(z)}\right)'=\frac{f'(0)}{g'(0)}-\frac{f(0)g''(0)}{2(g'(0))^2}.\]
 
-  此时, \(z_1,\dots,z_n\)是\(\frac{f(z)}{zg(z)}\)的1阶极点. 因此 \[\text{Res}(h,z_k)=\lim_{z\to z_k}\frac{f(z)}{z}\cdot\frac{z-z_k}{g(z)}=\frac{f(z_k)}{z_kg'(z_k)}.\] 若\(f(0)\ne0\), 则\(0\)也是\(h\)的1阶极点, \[\text{Res}(h,0)=\lim_{z\to 0}zh(z)=\frac{f(0)}{g(0)},\] 否则\(0\)是\(h\)的可去奇点.
-
-  故\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=\frac{f(0)}{g(0)}+\sum_{k=1}^n \frac{f(z_k)}{z_kg'(z_k)}.\]
-
-  情形2: \(0\)是\(g\)的零点, 不妨设为\(z_n\).
-
-
+  由Cauchy积分定理, \[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=I+\sum_{k=1}^n\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz.\] 故\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=\sum_{k:z_k\ne0}\frac{f(z_k)}{z_kg'(z_k)}+\frac{f(0)}{g(0)}\mathbb{1}\{g(0)\ne0\}+\left(\frac{f'(0)}{g'(0)}-\frac{f(0)g''(0)}{2(g'(0))^2}\right)\mathbb{1}\{g(0)=0\}.\qedhere\]
 \end{solution}
 
 \begin{problem}[5.4.10]

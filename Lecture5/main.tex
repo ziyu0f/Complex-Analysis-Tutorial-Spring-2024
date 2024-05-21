@@ -73,8 +73,8 @@
 \begin{problem}[5.2.2]
   求函数\(f(z)\)的奇点并判断其类型.
   \begin{itemize}
-    \item [(3)] \(\sin\frac{1}{z-1}\).
-    \item [(7)] \(\sin\left(\frac{1}{\cos\frac{1}{z}}\right)\).
+    \item [(3)] \(\sin\frac{1}{z-1}\);
+    \item [(7)] \(\sin\left(\frac{1}{\cos\frac{1}{z}}\right)\);
     \item [(8)] \(e^{\tan z}\).
   \end{itemize}
 \end{problem}
@@ -96,7 +96,74 @@
 \end{problem}
 
 \begin{solution}
-  设\(f\)
+  由\(f\)亚纯且非零, 其在\(B(0,1)\)只有有限个零点和极点, 设\(f\)零点为\(z_1,\dots,z_n\), 极点为\(w_1,\dots,w_m\) (可重复). 
+
+  令\[g(z)=f(z)\prod_{k=1}^{n}\frac{1-\bar{z}_kz}{z-z_k}\prod_{l=1}^{m}\frac{z-w_l}{1-\bar{w}_lz},\] 则\(g\)在\(\overline{B(0,1)}\)全纯且无零点, \(|g(z)|=1\)对任意\(z\in\partial B(0,1)\)成立. 考虑\(\frac1g\)并利用最大模原理, \(g\)为常数, 即\(g(z)=e^{i\theta}\), \(\theta\in\mathbb R\).
+
+  故所有满足要求的函数为\[f(z)=e^{i\theta}\prod_{k=1}^{n}\frac{z-z_k}{1-\bar{z}_kz}\prod_{l=1}^{m}\frac{1-\bar{w}_lz}{z-w_l},\] 其中\(\theta\in\mathbb R\), \(n,m\)为非负整数, \(z_1,\dots,z_n,w_1,\dots,w_m\in B(0,1)\).
+\end{solution}
+
+\begin{problem}[5.4.8]
+  求函数的孤立奇点并求出其留数.
+  \begin{itemize}
+    \item [(6)] \(\sin\frac{z}{z+1}\);
+    \item [(8)] \(\frac{e^{\pi z}}{z^2+1}\).
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item [(6)] 可能的奇点为\(-1,\infty\). 因为\(\lim_{z\to-1}f(z)\)不存在, 所以\(-1\)是本性奇点. 因为\(\lim_{z\to0}f(\frac{1}{z})=\sin1\), 所以\(\infty\)是可去奇点.
+    
+    由5.4.3, \[\text{Res}(f,\infty)=\lim_{z\to\infty}z^2f'(z)=\lim_{z\to\infty}\frac{z^2}{(z+1)^2}\cos\frac{z}{z+1}=\cos 1.\]
+    由留数定理, \[\text{Res}(f,-1)=-\text{Res}(f,\infty)=-\cos 1.\]
+    \item [(8)] 可能的奇点为\(\pm i,\infty\). 因为\(\lim_{z\to \pm i}f(z)=\infty\), 所以\(\pm i\)是极点. 因为\(\lim_{z\to0}f(\frac{1}{z})\)不存在, 所以\(\infty\)是本性奇点.
+    
+    由\(\pm i\)是1阶极点, \[\text{Res}(f,i)=\lim_{z\to i}(z-i)f(z)=\frac{i}{2},\] \[\text{Res}(f,-i)=\lim_{z\to -i}(z+i)f(z)=-\frac{i}{2}.\]
+    由留数定理, \(\text{Res}(f,\infty)=0\). \qedhere
+  \end{itemize}
+\end{solution}
+
+\begin{problem}[5.4.9]
+  设\(f,g\)在\(B(0,R)\)中全纯, 在\(\overline{B(0,R)}\)上连续, \(g\)在\(\partial B(0,R)\)上无零点, \(g\)在\(B(0,R)\)中的全部零点\(z_1,\dots,z_n\)都是1阶零点. 求\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz.\]
+\end{problem}
+
+\begin{solution}
+  记\(h(z)=\frac{f(z)}{zg(z)}\).
+
+  先证明: 若\(z_k\ne0\), 则对充分小的\(\varepsilon>0\),\[\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=\frac{f(z_k)}{z_kg'(z_k)}.\] 这可分两种情况讨论. 若\(f(z_k)\ne 0\), 则\(z_k\)是\(h\)的1阶极点, \[\text{Res}(h,z_k)=\lim_{z\to z_k}\frac{f(z)}{z}\cdot\frac{z-z_k}{g(z)}=\frac{f(z_k)}{z_kg'(z_k)}.\] 若\(f(z_k)=0\), 则\(z_k\)是\(h\)的可去奇点, 从而\(\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz=0\). 总之, 上式成立.
+
+  再讨论\(0\)处情形. 对充分小的\(\varepsilon>0\), 记\[I=\frac{1}{2\pi i}\int_{|z|=\varepsilon}\frac{f(z)}{zg(z)}dz.\]
+
+  情形1: \(0\)不是\(g\)的零点.
+
+  此时, \(z_1,\dots,z_n\)是\(\frac{f(z)}{zg(z)}\)的1阶极点. 因此 \[\text{Res}(h,z_k)=\lim_{z\to z_k}\frac{f(z)}{z}\cdot\frac{z-z_k}{g(z)}=\frac{f(z_k)}{z_kg'(z_k)}.\] 若\(f(0)\ne0\), 则\(0\)也是\(h\)的1阶极点, \[\text{Res}(h,0)=\lim_{z\to 0}zh(z)=\frac{f(0)}{g(0)},\] 否则\(0\)是\(h\)的可去奇点.
+
+  故\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=\frac{f(0)}{g(0)}+\sum_{k=1}^n \frac{f(z_k)}{z_kg'(z_k)}.\]
+
+  情形2: \(0\)是\(g\)的零点, 不妨设为\(z_n\).
+
+
+\end{solution}
+
+\begin{problem}[5.4.10]
+  求积分.
+  \begin{itemize}
+    \item [(1)] \(\int_{|z|=2}\frac{1}{z^3(z^{10}-2)}dz\);
+    \item [(4)] \(\int_{|z|=R}\frac{z^2}{e^{2\pi i z^3}-1}dz\).
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  \begin{itemize}
+    \item [(1)] 易知\(f\)在\(B(\infty,2)\)上全纯, 且\(\infty\)为可去奇点. 从而\[\text{Res}(f,\infty)=0.\] 故\[\int_{|z|=2}\frac{1}{z^3(z^{10}-2)}dz=-2\pi i\text{Res}(f,\infty)=0.\]
+    \item [(4)] 作换元\(w=z^3\). 注意\(z^2dz=\frac13dw\), 换元后变成绕3圈, 二者抵消. 因此\[\int_{|z|=R}\frac{z^2}{e^{2\pi i z^3}-1}dz = \int_{|w|=R^3}\frac{1}{e^{2\pi i w}-1}dw.\]
+    
+    在\(|w|<R^3\), \(\frac{1}{e^{2\pi i w}-1}\)有1阶极点\(0,\pm1,\dots,\pm n\), 且留数均为\(\frac{1}{2\pi i}\).
+
+    故\[\int_{|z|=R}\frac{z^2}{e^{2\pi i ^3}-1}dz=2\pi i\cdot(2n+1)\cdot\frac{1}{2\pi i}=2n+1. \tag*{\(\qed\)}\]
+  \end{itemize}
+  \renewcommand{\qedsymbol}{}
 \end{solution}
 
 \end{document}

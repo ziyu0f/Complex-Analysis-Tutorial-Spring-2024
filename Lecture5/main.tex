@@ -165,4 +165,72 @@
   \renewcommand{\qedsymbol}{}
 \end{solution}
 
+\begin{problem}[5.5.1(8)]
+  计算\[I=\int_0^\infty \frac{\cos x}{(1+x^2)^3}dx.\]
+\end{problem}
+
+\begin{solution}
+  令\(f(z)=\frac{e^{iz}}{(1+z^2)^3}\). 记\(\gamma_R=\{z=Re^{i\theta}:\theta\in[0,\pi]\}\). 由Jordan引理, \[\lim_{R\to\infty}\int_{\gamma_R}f(z)dz=0.\]
+
+  由留数定理, \[\int_{-R}^R f(x)dx+\int_{\gamma_R}f(z)dz=2\pi i\text{Res}(f, i)=2\pi i\lim_{z\to i}\frac{d^2}{dz^2}\frac{e^{iz}}{(z+i)^3}=\frac{7}{8}\pi e^{-1}.\]
+
+  令\(R\to \infty\)并注意\(\frac{\cos x}{(1+x^2)^3}\)是偶函数, 取实部得\[I=\frac{7}{16}\pi e^{-1}.\tag*{\(\qed\)}\]
+  \renewcommand{\qedsymbol}{}
+\end{solution}
+
+\begin{problem}[5.5.1(9)] \label{9}
+  计算\[I=\int_0^\infty \left(\frac{\sin x}{x}\right)^2dx.\]
+\end{problem}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/9.png}
+  \caption{题\ref{9}的图示.}
+  \label{fig:9}
+\end{figure}
+
+\begin{solution}
+  令\(f(z)=\frac{e^{2iz}-1}{z^2}\). 考虑\ref{fig:9}中围道. 则\[\int_{-R}^{-r}-\int_{\gamma_r}+\int_{r}^R+\int_{\gamma_R} f(z)dz=:I_1-I_2+I_3+I_4=0.\]
+
+  作换元\(x\to -x\), \[I_1+I_3=\int_r^R \frac{e^{-2ix}-1}{x^2}dx+\int_r^R \frac{e^{2ix}-1}{x^2}dx=-4\int_r^R \left(\frac{\sin x}{x}\right)^2dx.\]
+
+  由Jordan引理, \[\lim_{R\to\infty} I_4=0.\]
+
+  由引理5.5.9, \[\lim_{r\to0}I_2=i\pi\lim_{z\to0}zf(z)=-2\pi.\]
+
+  令\(R\to\infty\), \(r\to0\)得\(-4I+2\pi=0\), 即\[I=\frac{\pi}{2}.\tag*{\(\qed\)}\]
+  \renewcommand{\qedsymbol}{}
+\end{solution}
+
+\begin{problem}[5.5.1(11)]
+  计算\[I=\int_0^\infty \frac{x^p}{1+x^2}dx,\] 其中\(-1<p<1\).
+\end{problem}
+
+\begin{solution}
+  一般地, 
+\end{solution}
+
+\begin{problem}[5.5.1(15)]
+  计算\[I=\int_0^1 \frac{x^{1-p}(1-x)^p}{1+x^2}dx,\] 其中\(-1<p<2\).
+\end{problem}
+
+\begin{problem}[5.5.1(21)]
+  计算\[I=\int_0^\infty \frac{\log x}{x^2-1}dx.\]
+\end{problem}
+
+\begin{problem}[5.5.1(25)] \label{25}
+  计算\[I=\int_0^\infty \frac{x}{e^x+1}dx.\]
+\end{problem}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/25.png}
+  \caption{题\ref{25}的图示.}
+  \label{fig:25}
+\end{figure}
+
+\begin{solution}
+  令\(f(z)=\frac{z^2}{e^z+1}\).
+\end{solution}
+
 \end{document}

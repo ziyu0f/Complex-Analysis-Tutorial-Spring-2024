@@ -309,4 +309,41 @@
   \renewcommand{\qedsymbol}{}
 \end{solution}
 
+\section{补充题}
+
+\section{概率分布特征函数的计算}
+
+\begin{problem}[正态分布]
+  设\(X\sim N(\mu,\sigma^2)\), 有p.d.f. \[f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}.\] 则其特征函数为\[\phi(t)=\exp\left(i\mu t-\frac12 \sigma^2t^2\right).\]
+\end{problem}
+
+\begin{proof}
+  令\(y=\frac{x-\mu}{\sigma}\), 则\[
+    \phi(t)=\int_{-\infty}^\infty e^{itx}f(x)dx=e^{i\mu t-\frac12\sigma^2t^2}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(y-it\sigma)^2}{2}}dy.\]
+
+  只需证明\[\int_{-\infty}^\infty e^{-\frac{(y-it\sigma)^2}{2}}dy=\sqrt{2\pi}.\]
+
+  令\(f(z)=e^{-\frac{(z-it\sigma)^2}{2}}\). 考虑以\(\Im z=0\)和\(\Im z=t\sigma\)为上下边, 宽为\(2R\)的关于虚轴对称的矩形围道. 由Cauchy积分定理, \(f\)沿围道积分为\(0\). 而在两竖边上, \(|f(z)|=O(e^{-R^2})\). 令\(R\to\infty\), 有\[\int_{-\infty}^\infty e^{-\frac{(y-it\sigma)^2}{2}}dy=\int_{-\infty}^\infty e^{-\frac{y^2}{2}}dy=\sqrt{2\pi}.\tag*{\(\qed\)}\]
+  \renewcommand{\qedsymbol}{}
+\end{proof}
+
+\begin{problem}[Gamma分布]
+  设\(X\sim \text{Gamma}(\alpha,\beta)\), 有p.d.f. \[f(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\] 其中\(\alpha>0\), \(\beta>0\), \(\Gamma(\alpha)=\int_0^\infty t^{\alpha-1}e^{-t}dt\). 则其特征函数为\[\phi(t)=\left(1-\frac{it}{\beta}\right)^{-\alpha}.\] 
+\end{problem}
+
+\begin{proof}
+  令\(f(z)=z^{\alpha-1}e^{(it-\beta)z}=e^{(\alpha-1)\log z+(it-\beta)z}\). 则\[\phi(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty f(x)dx.\]
+
+  考虑扇形围道, 半径为\(R\), 两边为正实轴和\(\{z=\frac{x}{-it+\beta}:x\ge0\}\), 且在原点附近去掉半径为\(r\)的小圆弧. 由Cauchy积分定理, \(f\)沿围道积分为\(0\).
+
+  沿大圆弧, \(|f(z)|\)关于\(R\)指数衰减, 从而积分趋于\(0\).
+  
+  沿小圆弧, \(|f(z)|=O(r^{\alpha-1})\), 从而积分趋于\(0\).
+
+  令\(R\to\infty\), \(r\to0\), 有\[\int_0^\infty f(x)dx=\int_0^\infty f\left(\frac{x}{-it+\beta}\right)\frac{1}{-it+\beta}dx=\Gamma(\alpha)\left(\frac{1}{\beta-it}\right)^\alpha.\]
+
+  故\[\phi(t)=\left(1-\frac{it}{\beta}\right)^{-\alpha}.\tag*{\(\qed\)}\]
+  \renewcommand{\qedsymbol}{}
+\end{proof}
+
 \end{document}

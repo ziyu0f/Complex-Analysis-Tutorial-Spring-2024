@@ -125,6 +125,10 @@
   \end{itemize}
 \end{solution}
 
+\begin{remark}
+  本题说明, 即使\(\infty\)是可去奇点, 该处的留数也可能不为0.
+\end{remark}
+
 \begin{problem}[5.4.9]
   设\(f,g\)在\(B(0,R)\)中全纯, 在\(\overline{B(0,R)}\)上连续, \(g\)在\(\partial B(0,R)\)上无零点, \(g\)在\(B(0,R)\)中的全部零点\(z_1,\dots,z_n\)都是1阶零点. 求\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz.\]
 \end{problem}
@@ -142,7 +146,8 @@
 
   若\(0\)是\(g\)的零点, 对\(f\)在0处情况讨论. \newline 若\(0\)是\(f\)的至少2阶零点, 则\(0\)是\(h\)的可去奇点, 从而\[I=0.\] 若\(0\)是\(f\)的1阶零点, 则\(0\)是\(h\)的1阶极点, \[I=\text{Res}(h,0)=\lim_{z\to0}zh(z)=\lim_{z\to0}\frac{f(z)/z}{g(z)/z}=\frac{f'(0)}{g'(0)}.\] 若\(0\)不是\(f\)的零点, 则\(0\)是\(h\)的2阶极点, \[I=\text{Res}(h,0)=\lim_{z\to0}(z^2h(z))'=\lim_{z\to0}\left(\frac{zf(z)}{g(z)}\right)'=\frac{f'(0)}{g'(0)}-\frac{f(0)g''(0)}{2(g'(0))^2}.\]
 
-  由Cauchy积分定理, \[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=I+\sum_{k=1}^n\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz.\] 故\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=\sum_{k:z_k\ne0}\frac{f(z_k)}{z_kg'(z_k)}+\frac{f(0)}{g(0)}\mathbb{1}\{g(0)\ne0\}+\left(\frac{f'(0)}{g'(0)}-\frac{f(0)g''(0)}{2(g'(0))^2}\right)\mathbb{1}\{g(0)=0\}.\qedhere\]
+  由Cauchy积分定理, \[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=I+\sum_{k=1}^n\frac{1}{2\pi i}\int_{|z-z_k|=\varepsilon}\frac{f(z)}{zg(z)}dz.\] 故\[\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{zg(z)}dz=\sum_{k:z_k\ne0}\frac{f(z_k)}{z_kg'(z_k)}+\frac{f(0)}{g(0)}\mathbb{1}\{g(0)\ne0\}+\left(\frac{f'(0)}{g'(0)}-\frac{f(0)g''(0)}{2(g'(0))^2}\right)\mathbb{1}\{g(0)=0\}.\tag*{\(\qed\)}\]
+  \renewcommand{\qedsymbol}{}
 \end{solution}
 
 \begin{problem}[5.4.10]
@@ -184,7 +189,7 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/9.png}
+  \includegraphics[width=0.6\textwidth]{images/9.png}
   \caption{题\ref{9}的图示.}
   \label{fig:9}
 \end{figure}
@@ -208,7 +213,7 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/11.png}
+  \includegraphics[width=0.4\textwidth]{images/11.png}
   \caption{题\ref{11}的图示.}
   \label{fig:11}
 \end{figure}
@@ -248,11 +253,13 @@
 
   计算留数: \[\text{Res}(f,i)=\lim_{z\to i}\frac{z^{1-p}(1-z)^p}{z+i}=\frac{1}{2i}2^{p/2}\exp i\left((1-p)\cdot\frac{\pi}{2}+p\cdot(-\frac{\pi}{4})\right)=2^{\frac{p}{2}-1}e^{-\frac{3p\pi i}{4}},\] \[\text{Res}(f,-i)=\lim_{z\to -i}\frac{z^{1-p}(1-z)^p}{z-i}=-\frac{1}{2i}2^{p/2}\exp i\left((1-p)\cdot\frac{3\pi}{2}+p\cdot\frac{\pi}{4}\right)=2^{\frac{p}{2}-1}e^{-\frac{5p\pi i}{4}}.\]
 
-  当\(R\to\infty\)时, 由引理5.5.15, \[I_5\to2\pi i e^{i\pi p}.\]
+  当\(R\to\infty\)时, 由引理5.5.15, \[I_5\to2\pi i e^{-i\pi p}.\]
+
+  当\(r\to0\)时, \[I_4=O(r^{1-p}r)\to 0,\] \[I_2=O(r^p r)\to0.\]
 
   对\(x\in(0,1)\), \[f(x_{\text{下}})=f(x_{\text{上}})e^{-2i\pi p},\] 从而\[I_3=I_1e^{-2i \pi p}.\]
 
-  令\(R\to\infty\), \(r\to 0\), \[(1-e^{-2i\pi p})I+2\pi ie^{i\pi p}=i\pi 2^{\frac{p}{2}}\left(e^{-i\frac{3\pi p}{4}}+e^{-i\frac{5\pi p}{4}}\right).\]
+  令\(R\to\infty\), \(r\to 0\), \[(1-e^{-2i\pi p})I+2\pi ie^{-i\pi p}=i\pi 2^{\frac{p}{2}}\left(e^{-i\frac{3\pi p}{4}}+e^{-i\frac{5\pi p}{4}}\right).\]
 
   取虚部可得\[I=-\frac{\pi}{\sin p\pi}+\frac{\pi 2^{p/2}\cos \frac{p\pi}{4}}{\sin p\pi}. \tag*{\(\qed\)}\]
   \renewcommand{\qedsymbol}{}
@@ -264,7 +271,7 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\textwidth]{images/21.png}
+  \includegraphics[width=0.4\textwidth]{images/21.png}
   \caption{题\ref{21}的图示.}
   \label{fig:21}
 \end{figure}
@@ -288,7 +295,7 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/25.png}
+  \includegraphics[width=0.6\textwidth]{images/25.png}
   \caption{题\ref{25}的图示.}
   \label{fig:25}
 \end{figure}
@@ -310,6 +317,97 @@
 \end{solution}
 
 \section{补充题}
+
+\begin{problem}[5.2.6]
+  设\(f\)是\(B(z_0,R)\backslash\{z_0\}\)上非常值的全纯函数. 证明: 若\(z_0\)是\(f\)的零点集的极限点, 则\(z_0\)是\(f\)的本性奇点.
+\end{problem}
+
+\begin{proof}
+  由条件易知\(z_0\)是\(f\)的孤立奇点.
+  
+  若\(z_0\)是\(f\)的可去奇点, 则由\(z_0\)是\(f\)的零点集的极限点知\(\lim_{z\to _0}f(z)=0\), 且补充定义\(f(z_0)=0\)后\(f\)在\(B(z_0,R)\)全纯. 由唯一性定理知\(f\equiv0\), 矛盾.
+  
+  若\(z_0\)是\(f\)的极点, 则对\(B(z_0,R)\backslash\{z_0\}\)任意趋于\(z_0\)的序列\(\{w_n\}\), 有\(\lim_{n\to\infty}f(w_n=\infty)\), 与\(z_0\)是\(f\)的零点集的极限点矛盾.
+  
+  故\(z_0\)是\(f\)的本性奇点.
+\end{proof}
+
+\begin{problem}[5.2.7]
+  若\(f\)是\(B(z_0,R)\backslash\{z_0\}\)上的亚纯函数, 且\(z_0\)是\(f\)的极点集的极限点, 则对任意\(A\in\mathbb{C}_\infty\), 存在\(B(z_0,R)\backslash\{z_0\}\)中收敛于\(z_0\)的点列\(\{z_n\}\), 使得\(\lim_{n\to\infty}f(z_n)=A\).
+\end{problem}
+
+\begin{proof}
+  设题中所说点列为\(\{w_n\}\).
+
+  若\(A=\infty\), 则对任意\(n\), 由于\(w_n\)是极点, 存在\(z_n\in B(z_0,R)\backslash\{z_0\}\), 使得\(|z_n-w_n|<\frac1n\)且\(|f(z_n)>n\). 从而\(z_n\to z_0\)且\(\lim_{n\to\infty}f(z_n)=\infty=A\).
+
+  设\(A\)是有限. 若\(z_0\)任一邻域中有\(f(z)-A\)的零点, 则结论成立. 若不然, 存在\(\delta>0\), 使得\(f(z)-A\)在\(0<|z-z_0|<\delta\)中恒不为\(0\). 令\(g(z)=\frac{1}{f(z)-A}\), \(0<|z-z_0|<\delta\). 对\(f\)的任一极点\(w\), \(\lim_{z\to w}g(z)=0\), 补充定义\(g(w)=0\), 则\(g\)在\(B(z_0,\delta)\backslash\{z_0\}\)中全纯. 因为\(\lim_{n\to\infty}g(w_n)=0\), 所以\(z_0\)或者是\(g\)的本性奇点, 或者是可去奇点. 下面讨论这两种情况.
+
+  若\(z_0\)是\(g\)的可去奇点, 则补充定义\(g(z_0)=0\), \(g\)在\(B(z_0,\delta)\)中全纯. 由唯一性定理, \(g\equiv0\), 与\(f\)在\(B(z_0,R)\backslash\{z_0\}\)上亚纯矛盾.
+
+  若\(z_0\)是\(g\)的本性奇点, 则存在\(B(z_0,R)\backslash\{z_0\}\)中收敛于\(z_0\)的点列\(\{z_n\}\), 使得\(g(z_n)\to\infty\), 从而\(f(z_n)\to A\), 结论成立.
+\end{proof}
+
+\begin{problem}[5.2.8]
+  设\(f\)在\(B(0,R)\backslash\{0\}\)上全纯. 证明: 若\(\Re f(z)>0\)对所有\(z\in B(0,R)\backslash\{0\}\)成立, 则\(0\)是\(f\)的可去奇点.
+\end{problem}
+
+\begin{proof}
+  由条件易知\(0\)是\(f\)的孤立奇点. 令\(g(z)=\frac{f(z)-1}{f(z)+1}\), 则\(g\)在\(B(0,R)\backslash\{0\}\)上全纯, \(0\)是\(g\)的孤立奇点.
+
+  由\(\Re f(z)>0\)可得\(|g(z)|<1\), 从而\(0\)是\(g\)的可去奇点. 因此\(\lim_{z\to0}g(z)=A\in\mathbb{C}\backslash\{1\}\). 
+
+  故\(\lim_{z\to0}f(z)=\frac{1+A}{1-A}\), 从而\(0\)是\(f\)的可去奇点.
+\end{proof}
+
+\begin{problem}[5.3.5]
+  设\(f\)是整函数, 证明:
+  \begin{enumerate}
+    \item 若\(f(\mathbb R)\subset \mathbb{R}\), \(f(i\mathbb R)\subset i\mathbb R\), 则\(f\)是奇函数;
+    \item 若\(f(\mathbb R)\subset \mathbb R\), \(f(i\mathbb R)\subset \mathbb R\), 则\(f\)是偶函数.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 令\(g(z)=f(z)-\overline{f(\overline z)}\), \(g\)是整函数. 任意\(x\in\mathbb R\), \(f(x)=\overline{f(x)}=\overline{f(\overline x)}\), 即\(g(x)=0\). 从而\(g\equiv 0\), 即\(f(z)\equiv\overline{f(\overline{ z})}\).
+    
+    令\(h(z)=f(z)+f(-z)\). 任意\(x\in\mathbb R\), \(f(-xi)=\overline{f(xi)}=-f(xi)\), 即\(h(x)=0\). 从而\(h\equiv0\). 
+    
+    故\(f\)是奇函数.
+
+    \item 同1可知\(f(z)\equiv\overline{f(\overline{ z})}\).
+    
+    令\(h(z)=f(z)-f(-z)\). 任意\(x\in\mathbb R\), \(f(-xi)=\overline{f(-xi)}=f(xi)\), 即\(h(x)=0\). 从而\(h\equiv0\). 
+    
+    故\(f\)是偶函数.\qed
+  \end{enumerate}
+  \renewcommand{\qedsymbol}{}
+\end{proof}
+
+\begin{problem}[5.4.3]
+  设\(f\)在\(B(\infty,R)\)上全纯, 证明:
+  \begin{enumerate}
+    \item 若\(\infty\)是\(f\)的可去奇点, 则\[\text{Res}(f,\infty)=\lim_{z\to\infty}z^2f'(z);\]
+    \item 若\(\infty\)是\(f\)的\(m\)阶极点, 则\[\text{Res}(f,\infty)=\frac{(-1)^m}{(m+1)!}\lim_{z\to\infty}z^{m+2}f^{(m+1)}(z).\]
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 令\(g(z)=f(1/z)\). \(0\)是\(g\)的可去奇点. 于是\begin{align*}
+      \text{Res}(f,\infty)&=-\frac{1}{2\pi i}\int_{|z|=R_0} f(z)dz\\
+      &=-\frac{1}{2\pi i}\int_{|z|=\frac{1}{R_0}} \frac{g(z)}{z^2}dz\\
+      &=-g'(0)\\
+      &=-\lim_{z\to0}g'(z)\\
+      &=\lim_{z\to 0}\frac{f'(1/z)}{z^2}\\
+      &=\lim_{z\to\infty}z^2f'(z).
+    \end{align*}
+    \item 可设\(f\)的Laurent展开为\[f(z)=a_mz^m+a_{m-1}z^{m-1}+\cdots.\]
+    因此\[\text{Res}(f,\infty)=-a_{-1}=\frac{(-1)^m}{(m+1)!}\lim_{z\to\infty}z^{m+2}f^{(m+1)}(z).\tag*{\(\qed\)}\]
+  \end{enumerate}
+  \renewcommand{\qedsymbol}{}
+\end{proof}
 
 \section{概率分布特征函数的计算}
 

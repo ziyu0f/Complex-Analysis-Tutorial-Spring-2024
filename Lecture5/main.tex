@@ -253,7 +253,9 @@
 
   计算留数: \[\text{Res}(f,i)=\lim_{z\to i}\frac{z^{1-p}(1-z)^p}{z+i}=\frac{1}{2i}2^{p/2}\exp i\left((1-p)\cdot\frac{\pi}{2}+p\cdot(-\frac{\pi}{4})\right)=2^{\frac{p}{2}-1}e^{-\frac{3p\pi i}{4}},\] \[\text{Res}(f,-i)=\lim_{z\to -i}\frac{z^{1-p}(1-z)^p}{z-i}=-\frac{1}{2i}2^{p/2}\exp i\left((1-p)\cdot\frac{3\pi}{2}+p\cdot\frac{\pi}{4}\right)=2^{\frac{p}{2}-1}e^{-\frac{5p\pi i}{4}}.\]
 
-  当\(R\to\infty\)时, 由引理5.5.15, \[I_5\to2\pi i e^{-i\pi p}.\]
+  当\(R\to\infty\)时, 由引理5.5.15, \[I_5\to2\pi i e^{-i\pi p},\] 其中\(\lim_{z\to\infty} zf(z)=e^{-i\pi p}\)可如下计算:
+
+  令\(z\)沿实轴趋于\(+\infty\), 则\(zf(z)\)模长趋于\(1\), 辐角趋于\((2-p)\cdot0+p\cdot(-\pi)=-p\pi\).
 
   当\(r\to0\)时, \[I_4=O(r^{1-p}r)\to 0,\] \[I_2=O(r^p r)\to0.\]
 
@@ -272,18 +274,18 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.4\textwidth]{images/21.png}
-  \caption{题\ref{21}的图示.}
+  \caption{题\ref{21}的图示, 其中在1附近去掉半径为\(r\)的半圆}
   \label{fig:21}
 \end{figure}
 
 \begin{solution}
-  令\(f(z)=\frac{\log z}{z^2-1}\). 考虑图\ref{fig:21}中围道. 则\[\int_{r}^{R}+\int_{\gamma_R}-\int_{ri}^{Ri}-\int_{\gamma_r} f(z)dz=:I_1+I_2-I_3-I_4=0.\]
+  令\(f(z)=\frac{\log z}{z^2-1}\). 考虑图\ref{fig:21}中围道. 则\[\int_{r}^{1-r}+\int_{\gamma_1}+\int_{1+r}^R+\int_{\gamma_R}-\int_{ri}^{Ri}-\int_{\gamma_r} f(z)dz=:I_1+I_2+I_3-I_4-I_5=0.\]
 
-  令\(z=yi\), \[I_3=\int_r^R\frac{\log y+\frac{\pi}{2}i}{-y^2-1}idy=\frac{\pi}{2}\int_r^R\frac{dy}{1+y^2}+\text{虚数}.\]
+  令\(z=yi\), \[I_4=\int_r^R\frac{\log y+\frac{\pi}{2}i}{-y^2-1}idy=\frac{\pi}{2}\int_r^R\frac{dy}{1+y^2}+\text{虚数}.\]
 
-  当\(R\to\infty\)时, \[I_2=O\left(\frac{\log R}{R^2}\cdot R\right)\to0.\]
+  当\(R\to\infty\)时, \[I_4=O\left(\frac{\log R}{R^2}\cdot R\right)\to0.\]
 
-  当\(r\to0\)时, \[I_4=O\left(\frac{\log r}{1-r^2}\cdot r\right)\to0.\]
+  当\(r\to0\)时, \[I_2=O\left(\frac{\log (1+r)}{r}\cdot r\right)\to0\] \[I_5=O\left(\frac{\log r}{1-r^2}\cdot r\right)\to0.\]
 
   令\(R\to\infty\), \(r\to0\)并取实部得\[I=\frac{\pi}{2}\int_0^\infty\frac{dy}{1+y^2}=\frac{\pi^2}{4}.\tag*{\(\qed\)}\]
   \renewcommand{\qedsymbol}{}
@@ -327,7 +329,7 @@
   
   若\(z_0\)是\(f\)的可去奇点, 则由\(z_0\)是\(f\)的零点集的极限点知\(\lim_{z\to _0}f(z)=0\), 且补充定义\(f(z_0)=0\)后\(f\)在\(B(z_0,R)\)全纯. 由唯一性定理知\(f\equiv0\), 矛盾.
   
-  若\(z_0\)是\(f\)的极点, 则对\(B(z_0,R)\backslash\{z_0\}\)任意趋于\(z_0\)的序列\(\{w_n\}\), 有\(\lim_{n\to\infty}f(w_n=\infty)\), 与\(z_0\)是\(f\)的零点集的极限点矛盾.
+  若\(z_0\)是\(f\)的极点, 则对\(B(z_0,R)\backslash\{z_0\}\)任意趋于\(z_0\)的序列\(\{w_n\}\), 有\(\lim_{n\to\infty}f(w_n)=\infty\), 与\(z_0\)是\(f\)的零点集的极限点矛盾.
   
   故\(z_0\)是\(f\)的本性奇点.
 \end{proof}
@@ -339,7 +341,7 @@
 \begin{proof}
   设题中所说点列为\(\{w_n\}\).
 
-  若\(A=\infty\), 则对任意\(n\), 由于\(w_n\)是极点, 存在\(z_n\in B(z_0,R)\backslash\{z_0\}\), 使得\(|z_n-w_n|<\frac1n\)且\(|f(z_n)>n\). 从而\(z_n\to z_0\)且\(\lim_{n\to\infty}f(z_n)=\infty=A\).
+  若\(A=\infty\), 则对任意\(n\), 由于\(w_n\)是极点, 存在\(z_n\in B(z_0,R)\backslash\{z_0\}\), 使得\(|z_n-w_n|<\frac1n\)且\(|f(z_n)|>n\). 从而\(z_n\to z_0\)且\(\lim_{n\to\infty}f(z_n)=\infty=A\).
 
   设\(A\)是有限. 若\(z_0\)任一邻域中有\(f(z)-A\)的零点, 则结论成立. 若不然, 存在\(\delta>0\), 使得\(f(z)-A\)在\(0<|z-z_0|<\delta\)中恒不为\(0\). 令\(g(z)=\frac{1}{f(z)-A}\), \(0<|z-z_0|<\delta\). 对\(f\)的任一极点\(w\), \(\lim_{z\to w}g(z)=0\), 补充定义\(g(w)=0\), 则\(g\)在\(B(z_0,\delta)\backslash\{z_0\}\)中全纯. 因为\(\lim_{n\to\infty}g(w_n)=0\), 所以\(z_0\)或者是\(g\)的本性奇点, 或者是可去奇点. 下面讨论这两种情况.
 

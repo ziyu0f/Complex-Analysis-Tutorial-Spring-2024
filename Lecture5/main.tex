@@ -225,9 +225,9 @@
 
   令\(f(z)=\frac{z^{(a+1-b)/b}}{1+z}\), 在正实轴上岸取正值. 考虑图\ref{fig:11}中围道. 则\[\int_{r}^{R}+\int_{\gamma_R}-\int_{\gamma_1}-\int_{\gamma_r} f(z)dz=:I_1+I_2-I_3-I_4=2\pi i\text{Res}(f,-1)=2\pi i e^{i\pi \frac{a+1-b}{b}}.\]
 
-  当\(R\to\infty\)时, \[I_2=O\left(R^{\frac{a+1-b}{b}-1+1}\right)\to0.\]
+  当\(R\to\infty\)时, \[|I_2|=O\left(R^{\frac{a+1-b}{b}-1+1}\right)\to0.\]
 
-  当\(r\to0\)时, \[I_4=O\left(r^{\frac{a+1-b}{b}}r\right)\to0.\]
+  当\(r\to0\)时, \[|I_4|=O\left(r^{\frac{a+1-b}{b}}r\right)\to0.\]
 
   对\(x\in(0,\infty)\), \[f(x_{\text{下}})=f(x_{\text{上}})\exp\left(2i\pi\frac{a+1-b}{b}\right),\] 从而\[I_3=I_1\exp\left(i\pi\frac{a+1-b}{b}\right).\]
 
@@ -255,9 +255,9 @@
 
   当\(R\to\infty\)时, 由引理5.5.15, \[I_5\to2\pi i e^{-i\pi p},\] 其中\(\lim_{z\to\infty} zf(z)=e^{-i\pi p}\)可如下计算:
 
-  令\(z\)沿实轴趋于\(+\infty\), 则\(zf(z)\)模长趋于\(1\), 辐角趋于\((2-p)\cdot0+p\cdot(-\pi)=-p\pi\).
+  令\(z\)沿实轴趋于\(+\infty\), 则\(zf(z)\)模长趋于\(1\), 辐角趋于\((2-p)\cdot0+p\cdot(-\pi)=-p\pi\). 事实上, 沿任何方向趋于\(\infty\)都是一样的, 但注意考虑\(\frac{1}{1+z^2}\)的辐角变化.
 
-  当\(r\to0\)时, \[I_4=O(r^{1-p}r)\to 0,\] \[I_2=O(r^p r)\to0.\]
+  当\(r\to0\)时, \[|I_4|=O(r^{1-p}r)\to 0,\] \[|I_2|=O(r^p r)\to0.\]
 
   对\(x\in(0,1)\), \[f(x_{\text{下}})=f(x_{\text{上}})e^{-2i\pi p},\] 从而\[I_3=I_1e^{-2i \pi p}.\]
 
@@ -281,11 +281,11 @@
 \begin{solution}
   令\(f(z)=\frac{\log z}{z^2-1}\). 考虑图\ref{fig:21}中围道. 则\[\int_{r}^{1-r}+\int_{\gamma_1}+\int_{1+r}^R+\int_{\gamma_R}-\int_{ri}^{Ri}-\int_{\gamma_r} f(z)dz=:I_1+I_2+I_3-I_4-I_5=0.\]
 
-  令\(z=yi\), \[I_4=\int_r^R\frac{\log y+\frac{\pi}{2}i}{-y^2-1}idy=\frac{\pi}{2}\int_r^R\frac{dy}{1+y^2}+\text{虚数}.\]
+  令\(z=yi\), \[I_5=\int_r^R\frac{\log y+\frac{\pi}{2}i}{-y^2-1}idy=\frac{\pi}{2}\int_r^R\frac{dy}{1+y^2}+\text{虚数}.\]
 
-  当\(R\to\infty\)时, \[I_4=O\left(\frac{\log R}{R^2}\cdot R\right)\to0.\]
+  当\(R\to\infty\)时, \[|I_4|=O\left(\frac{\log R}{R^2}\cdot R\right)\to0.\]
 
-  当\(r\to0\)时, \[I_2=O\left(\frac{\log (1+r)}{r}\cdot r\right)\to0\] \[I_5=O\left(\frac{\log r}{1-r^2}\cdot r\right)\to0.\]
+  当\(r\to0\)时, \[|I_2|=O\left(\frac{\log (1+r)+r}{r}\cdot r\right)\to0\] \[|I_5|=O\left(\frac{-\log r}{1-r^2}\cdot r\right)\to0.\]
 
   令\(R\to\infty\), \(r\to0\)并取实部得\[I=\frac{\pi}{2}\int_0^\infty\frac{dy}{1+y^2}=\frac{\pi^2}{4}.\tag*{\(\qed\)}\]
   \renewcommand{\qedsymbol}{}
